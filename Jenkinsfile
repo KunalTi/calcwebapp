@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git url: 'https://github.com/rchidana/calcwebapp.git'    
+                git url: 'https://github.com/KunalTi/calcwebapp.git'    
 		            echo "Code Checked-out Successfully!!";
             }
         }
         
         stage('Package') {
             steps {
-                bat 'mvn package'    
+                bat 'mvn clean verify sonar:sonar -Dsonar.projectKey=SonarQube -Dsonar.projectName='SonarQube' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_aa7371dd7eaf47e7323c124f40ff8b5da6faf74a'    
 		            echo "Maven Package Goal Executed Successfully!";
             }
         }
